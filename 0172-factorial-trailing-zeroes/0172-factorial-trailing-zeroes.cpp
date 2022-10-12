@@ -2,12 +2,14 @@ class Solution {
 public:
     int trailingZeroes(int A) {
         
-       int sum = 0;
-        while (A/ 5 > 0) {
-            sum += (A/ 5);
-            A/= 5;
-        }
-        return sum;
+       int i =5;
+    int ans = 0;
+    while(A>=i){
+        int x = A/i ;
+        ans+=x;
+        i*=5;
+    }
+    return ans;
         
     }
 };
