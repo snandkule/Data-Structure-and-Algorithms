@@ -4,29 +4,15 @@ public:
         
         int ans = 0;
         
-        for(int i=0;i<grid.size();i++){
+        int m = grid.size(), n = grid[0].size(), r = 0, c = n-1;
+        
+        while(r<m){
             
-            int lo = 0, hi = grid[i].size()-1,mid=0;
-            int pos =-1;
-            while(lo<hi){
-                
-                mid = (lo + hi)/2;
-                if(grid[i][mid]>=0){
-                    if(mid+1<grid[i].size() && grid[i][mid+1]<0){
-                        pos = mid;
-                        break;
-                    }
-                    lo = mid+1;
-                }else{
-                 hi = mid;
-                }
-            }
-            if(pos ==-1 && grid[i][0]>=0)
-                pos = grid[i].size() - 1;
-            else if(pos ==-1 && grid[i][0]<0)
-                pos = -1;
-            cout<<pos<<endl;
-            ans+=(grid[i].size() - 1-pos);
+            while(c>=0 && grid[r][c]<0)c--;
+            cout<<n-c-1<<endl;
+            
+			ans+=n-c-1;
+            r++;
         }
         return ans;
         
