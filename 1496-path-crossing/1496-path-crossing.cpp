@@ -2,24 +2,18 @@ class Solution {
 public:
     bool isPathCrossing(string path) {
         
-        int x=0,y=0;
-        set<pair<int,int>> s1;
-        s1.insert({x,y});
-        
-        for(auto&c:path){
-            
-            if(c=='N'){
-                y++;
-            }else if(c=='E'){
-                x++;
-            }else if(c=='S')
-            {
-                y--;
-            }else if(c=='W'){
-                x--;
-            }
-            if(s1.find({x,y})!=s1.end())return true;
-            s1.insert({x,y});
+      int x = 0, y = 0;
+        unordered_set<string> seen = {"0,0"};
+        for (char d : path) {
+            if (d == 'N') y++;
+            if (d == 'E') x++;
+            if (d == 'S') y--;
+            if (d == 'W') x--;
+
+            string loc = to_string(x) + "," + to_string(y);
+            if (seen.find(loc) != seen.end())
+                return true;
+            seen.insert(loc);
         }
         return false;
     }
