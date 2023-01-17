@@ -11,9 +11,8 @@ public:
         }
         
         string ans = "";
-        int len = nums.length();
-        int lim = len;
-        if(len%3==1)lim = len-4;
+        int lim = nums.length();
+        if(nums.length()%3==1)lim = nums.length()-4;
         for(int i=0;i<lim;i++){
             
             if(i>0 && i%3==0){
@@ -23,10 +22,10 @@ public:
             
         }
         
-        if(len%3==0 || len%3==2){
+        if(nums.length()%3==0 || nums.length()%3==2){
             return ans;
         }
-        if(len>4)
+        if(nums.length()>4)
             ans.push_back('-');
         ans.push_back(nums[lim]);
         ans.push_back(nums[lim+1]);
