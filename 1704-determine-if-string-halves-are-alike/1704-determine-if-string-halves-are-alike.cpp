@@ -13,7 +13,6 @@ public:
                s[i]=='A'||s[i]=='E'||s[i]=='I'||s[i]=='O'||s[i]=='U')a2++;
         }
         
-        if(a1==a2)return true;
-        return false;
+        return a1==a2;
     }
 };
