@@ -22,51 +22,43 @@ public:
         
         
         vector<string> ans;
-        vector<string> ar;
+        map<string,int> m1;
+    
         string tmp="";
         for(int i=0;i<s1.length();i++){
             if(s1[i]!=' '){
                 tmp.push_back(s1[i]);
             }else{
-                ar.push_back(tmp);
+                m1[tmp]++;
                 // cout<<tmp<<endl;
                 tmp="";
             }
         }
         if(tmp.length()>0)
-            ar.push_back(tmp);
+             m1[tmp]++;
         
         tmp="";
         for(int i=0;i<s2.length();i++){
             if(s2[i]!=' '){
                 tmp.push_back(s2[i]);
             }else{
-                ar.push_back(tmp);
+                 m1[tmp]++;
                 // cout<<tmp<<endl;
                 tmp="";
             }
         }
         if(tmp.length()>0)
-            ar.push_back(tmp);
+             m1[tmp]++;
      
         
     
-        map<string,int> m1;
+       
         
-        for(int i=0;i<ar.size();i++){
-          if(m1.find(ar[i])==m1.end())
-          {
-              m1[ar[i]]=1;
-            }else{
-              m1[ar[i]]++;
-          }
+        for(auto& e:m1){
+           if(e.second==1)
+             ans.push_back(e.first);
         }
-         for(int i=0;i<ar.size();i++){
-             // cout<<ar[i]<<", "<<m1[ar[i]]<<endl;
-         if(m1[ar[i]]==1)
-             ans.push_back(ar[i]);
-          
-        }
+         
         
         return ans;
         
