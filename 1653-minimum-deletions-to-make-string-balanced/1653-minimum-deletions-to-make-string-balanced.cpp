@@ -23,9 +23,9 @@ public:
             }
         }
         
-        long long ans = s.length();
+        int ans = s.length();
         
-        long long tmp = s.length()-postfixcnt_b[0];
+        int tmp = s.length()-postfixcnt_b[0];
            ans = min(ans,tmp);
         // cout<<"postfixcnt_b[0] ="<<postfixcnt_b[0]<<endl;
         tmp = s.length()-prefixcnt_a[s.length()-1];
