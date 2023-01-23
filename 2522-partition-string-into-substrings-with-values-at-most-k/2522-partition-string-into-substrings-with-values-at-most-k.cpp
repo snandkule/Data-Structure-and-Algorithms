@@ -1,18 +1,19 @@
 class Solution {
 public:
     
-    vector<long long int> arr;
-    
-    long long int getans(string& s, int k, int pos){
+    vector<long> arr;
+    long getans(string& s, int k, int pos){
         
-        if(arr[pos]!=s.length()+1)return arr[pos];
+        if(arr[pos]!=s.length()+1){
+            return arr[pos];
+        }
         if(pos==s.length()-1){
             if(s[pos]-'0'<=k)
                 return 1;
             return -1;
         }
         if(pos>=s.length())return 0;
-        long long int tmp=INT_MAX;
+        long tmp=INT_MAX;
         if(to_string(k).length()>=s.length()-pos){
              long int sub1 = stol(s.substr(pos));
             if(sub1<=k){
@@ -22,9 +23,9 @@ public:
         for(int i=1; i<=to_string(k).length()&& pos+i<s.length();i++)
         {
             //take substr pos to i and i to remaining
-            long int sub1 = stol(s.substr(pos,i));
+            long sub1 = stol(s.substr(pos,i));
             if(sub1<=k){
-                long long int nextans = getans(s,k,pos+i);
+                long nextans = getans(s,k,pos+i);
                 if(nextans!=-1)
                     tmp = min(tmp, 1+nextans);
             }
@@ -42,6 +43,7 @@ public:
     arr.assign(s.length(),s.length()+1);
         
         return getans(s,k,0);
+        
         
     }
 };
