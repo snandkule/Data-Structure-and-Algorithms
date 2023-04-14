@@ -12,9 +12,9 @@ public:
         // cout<<"ceil is "<<ceil((double)A.size()/2)<<endl;
         // if(m1[A[i]]>=ceil((double)A.size()/2))return A[i];
     }
-        for(auto iter=m1.begin();iter!=m1.end();iter++){
-            if(iter->second>floor((double)A.size()/3)){
-                ans.push_back(iter->first);
+        for(auto iter: m1){
+            if(iter.second>floor((double)A.size()/3)){
+                ans.push_back(iter.first);
             }
         }
     return ans;
