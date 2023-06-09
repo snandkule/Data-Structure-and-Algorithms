@@ -27,11 +27,24 @@ public:
         
     }
     int minDepth(TreeNode* root) {
-        if(root!=nullptr)
-            get_dfs(root,1);
-        else
-            return 0;
+        if(root==nullptr)return 0;
+        if(root->left==nullptr && root->right==nullptr){
+           return 1;
+        }
+        int leftd=INT_MAX;
+        if(root->left!=nullptr){
+            leftd = 1 + minDepth(root->left);
+        }
+        int rightd=INT_MAX;
+        if(root->right!=nullptr){
+            rightd = 1 + minDepth(root->right);
+        }
+        return min(leftd,rightd);
+//         if(root!=nullptr)
+//             get_dfs(root,1);
+//         else
+//             return 0;
         
-        return ans;
+//         return ans;
     }
 };
