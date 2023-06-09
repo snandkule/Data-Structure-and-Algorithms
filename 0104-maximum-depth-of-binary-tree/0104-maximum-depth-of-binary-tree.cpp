@@ -21,12 +21,11 @@ public:
         if(root->left!=nullptr){
             leftd = maxDepth(root->left)+1;
         }
-        int rightd  = INT_MIN;
         if(root->right!=nullptr){
-            rightd = maxDepth(root->right)+1;
+            return max(leftd, maxDepth(root->right)+1);
         }
-        
-        return max(leftd,rightd);
+        return leftd;
+        // return max(leftd,rightd);
         
     }
 };
