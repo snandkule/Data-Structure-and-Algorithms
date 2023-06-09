@@ -11,21 +11,7 @@
  */
 class Solution {
 public:
-    
-    int ans=INT_MAX;
-    
-    void get_dfs(TreeNode* node, int depth){
-        if(node->left==nullptr && node->right==nullptr){
-            ans = min(ans,depth);
-            return;
-        }
-        if(node->left!=nullptr)
-            get_dfs(node->left,depth+1);
-        if(node->right!=nullptr)
-            get_dfs(node->right,depth+1);
-        return;
-        
-    }
+
     int minDepth(TreeNode* root) {
         if(root==nullptr)return 0;
         if(root->left==nullptr && root->right==nullptr){
@@ -40,11 +26,6 @@ public:
             rightd = 1 + minDepth(root->right);
         }
         return min(leftd,rightd);
-//         if(root!=nullptr)
-//             get_dfs(root,1);
-//         else
-//             return 0;
-        
-//         return ans;
+
     }
 };
