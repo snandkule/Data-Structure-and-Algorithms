@@ -15,31 +15,24 @@ public:
         
         queue<TreeNode*> curr_q;
         
-        
         vector<double> ans;
-        
-        long double sum=0;
-        
         curr_q.push(root);
         
         while(!curr_q.empty())
         {
-            sum=0;
-            queue<TreeNode*> next_q;
-            double cnt=0;
-            while(!curr_q.empty())
-            {
+            int sz = curr_q.size();
+            double sum=0.0;
+            for(int i=0;i<sz;i++){
                 TreeNode*  tmp_node = curr_q.front();
                 sum+=tmp_node->val;
                 if(tmp_node->left!=nullptr)
-                    next_q.push(tmp_node->left);
+                    curr_q.push(tmp_node->left);
                 if(tmp_node->right!=nullptr)
-                    next_q.push(tmp_node->right);
+                    curr_q.push(tmp_node->right);
                 curr_q.pop();
-                cnt++;
             }
-            ans.push_back(sum/cnt);
-            curr_q = next_q;
+           
+            ans.push_back(sum/sz);
             
         }
         return ans;
