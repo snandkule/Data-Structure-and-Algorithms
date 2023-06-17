@@ -29,16 +29,22 @@ public:
             // cout<<"abc1 ="<<curr<<endl;
             for(int j=0;j<adj[curr].size();j++){
                 indegree[adj[curr][j]]--;
+                 if(indegree[adj[curr][j]]==0)
+                {
+                    st.push(adj[curr][j]);
+                    // cout<<"pushing in stack = "<<i<<endl;
+                    indegree[adj[curr][j]] = -1;
+                }
                 // cout<<"indegree of "<<adj[curr][j]<<" ="<<curr<<endl;
             }
-            for(int i=0;i<numCourses;i++){
-                if(indegree[i]==0)
-                {
-                    st.push(i);
-                    // cout<<"pushing in stack = "<<i<<endl;
-                    indegree[i] = -1;
-                }
-            }
+            // for(int i=0;i<numCourses;i++){
+            //     if(indegree[i]==0)
+            //     {
+            //         st.push(i);
+            //         // cout<<"pushing in stack = "<<i<<endl;
+            //         indegree[i] = -1;
+            //     }
+            // }
             
         }
         if(ans.size()==numCourses)return ans;
