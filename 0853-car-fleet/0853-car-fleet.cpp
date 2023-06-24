@@ -1,35 +1,59 @@
-class Car{
-public:
-    Car(int pos, int speed){
-        this->pos = pos;
-        this->speed= speed;
-    }
-    int pos;
-    int speed;
-};
-
 class Solution {
 public:
     int carFleet(int target, vector<int>& position, vector<int>& speed) {
-        vector<Car> cars;
-        int N = position.size();
-        for(int i = 0; i<N; i++){
-            cars.emplace_back(position.at(i), speed.at(i));
+        
+        map<int,int> m1;
+        
+        for(int i=0;i<position.size();i++){
+            m1[position[i]]= speed[i];
         }
+        sort(position.begin(),position.end());
         
-        sort(cars.begin(), cars.end(), [](const Car& a, const Car& b){
-            return a.pos<b.pos;
-        });
+        int ans=1;
         
-        stack<float> mono;
-        for(int i = 0; i<N; i++){
-            float time = 
-                (target-cars.at(i).pos)/(float)cars.at(i).speed;
-            while(!mono.empty() && time >= mono.top()){
-                mono.pop();
-            }
-            mono.push(time);
+        int curr=position.size()-1;
+        // double curr_time = (double)(target-position[curr])/m1[position[curr]];
+        
+        stack<double> mono;
+        for(int i=0;i<position.size();i++){
+            double curr_time =(double)(target-position[i])/(double)m1[position[i]];
+            
+          
+                while(!mono.empty() && mono.top()<=curr_time){
+                    mono.pop();
+                }
+                 mono.push(curr_time);
+            
         }
         return mono.size();
+        
+//           stack<float> mono;
+//         for(int i = 0; i<N; i++){
+//             float time = 
+//                 (target-cars.at(i).pos)/(float)cars.at(i).speed;
+//             while(!mono.empty() && time >= mono.top()){
+//                 mono.pop();
+//             }
+//             mono.push(time);
+//         }
+//         return mono.size();
+        // for(int i=curr-1;i>=0;i--){
+        //     if(m1[position[i]]<=m1[position[curr]] ){
+        //         ans++;
+        //         curr=i;
+        //         curr_time = (double)(target-position[i])/m1[position[i]];
+        //         continue;
+        //     }
+        //     double time1 =(double)(target-position[i])/m1[position[i]];
+        //      if(time1>curr_time)
+        //      {
+        //          ans++;
+        //          curr = i;
+        //          curr_time = time1;
+        //      }
+        // }
+        
+
+        // return ans;
     }
 };
