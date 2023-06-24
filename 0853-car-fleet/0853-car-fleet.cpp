@@ -9,14 +9,14 @@ public:
         }
         sort(position.begin(),position.end());
         
-        int ans=1;
+//         int ans=1;
         
-        int curr=position.size()-1;
+//         int curr=position.size()-1;
         // double curr_time = (double)(target-position[curr])/m1[position[curr]];
         
-        stack<double> mono;
+        stack<float> mono;
         for(int i=0;i<position.size();i++){
-            double curr_time =(double)(target-position[i])/(double)m1[position[i]];
+            float curr_time =(float)(target-position[i])/(float)m1[position[i]];
             
           
                 while(!mono.empty() && mono.top()<=curr_time){
