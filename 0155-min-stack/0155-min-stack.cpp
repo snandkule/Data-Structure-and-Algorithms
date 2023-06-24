@@ -1,46 +1,30 @@
 class MinStack {
-    vector<int> s;
-    int m=-1;
 public:
+    stack<int> s1;
+     stack<int> s2;
     MinStack() {
-        vector<int> t(0);
-        s = t;
-    }
-    
-    void find_min(){
-       
-        m = -1;
-        if(s.size()==0)return;
-        m = 0;
-        for(int i=1;i<s.size();i++){
-            if(s[m]>s[i])m=i;
-        }
         
     }
     
     void push(int val) {
-        if(m==-1){
-            m=0;
-        }else if(s[m]>val) m = s.size();
-        s.push_back(val);
+        s1.push(val);
+        if(s2.empty()||val<=getMin())s2.push(val);
     }
     
     void pop() {
-        s.pop_back();
         
-        if(m==s.size()){
-            find_min();
-        }
+        if(s1.top()==getMin())s2.pop();
+        s1.pop();
     }
     
     int top() {
-        
-        return s[s.size()-1];
+        return s1.top();
     }
     
     int getMin() {
-        return s[m];
+        return s2.top();
     }
+
 };
 
 /**
