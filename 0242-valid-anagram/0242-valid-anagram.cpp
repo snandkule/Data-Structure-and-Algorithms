@@ -3,8 +3,12 @@ public:
     bool isAnagram(string s, string t) {
         
         if(s.length()!=t.length())return false;
-        vector<int> m1(26,0);
-        vector<int> m2(26,0);
+        int m1[26];
+        int m2[26];
+         for(int i=0;i<26;i++){
+            m1[i]=0;
+             m2[i]=0;
+        }
         
         for(int i=0;i<s.length();i++){
             m1[s[i]-'a']++;
