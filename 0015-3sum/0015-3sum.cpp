@@ -7,26 +7,29 @@ public:
         sort(nums.begin(),nums.end());
 
         for(int i=0;i<nums.size()-2;i++){
-
-            if(i>0 && nums[i]==nums[i-1])continue;
-            int j=i+1,k=nums.size()-1;
-
-            while(j<k){
-                if(nums[j]+nums[k] == -1*nums[i]){
-                       vector<int> tmp(3,nums[i]);
-                       tmp[1]=nums[j];
-                       tmp[2]=nums[k];
-                    ans.push_back(tmp);
-
-                    j++;
-                    while(j<k && nums[j]==nums[j-1])j++;
-                }else if(nums[j]+nums[k] > -1*nums[i]){
-                    k--;
+            
+            int target = nums[i]*-1;
+            int front = i+1;
+            int back = nums.size()-1;
+        
+            while(front<back){
+               if(nums[front]+nums[back] > target){
+                    back--;
+                }else if(nums[front]+nums[back] < target){
+                    front++;
                 }else{
-                    j++;
-                }
+                       vector<int> tmp(3,nums[i]);
+                       tmp[1]=nums[front];
+                       tmp[2]=nums[back];
+                       ans.push_back(tmp);
 
+                    
+                    while(front<back && nums[front]==tmp[1])front++;
+                   while(front<back && nums[back]==tmp[2])back--;
+                }
             }
+            while(i<nums.size()-1 && nums[i]==nums[i+1])i++;
+            
         }
         return ans;
         
