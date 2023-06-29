@@ -3,7 +3,8 @@ public:
     vector<vector<int>> threeSum(vector<int>& nums) {
       
     vector<vector<int>> ans;
-    set<vector<int>> s1;
+    
+        set<vector<int>> s1;
         unordered_map<int,int> s2;
         s2[nums[0]]=1;
         for(int i=1;i<nums.size();i++){
