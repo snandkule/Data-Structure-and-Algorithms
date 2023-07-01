@@ -23,6 +23,7 @@ public:
         
         while(end<s2.length()){
             
+            if(arr1[s2[start]-'a']==arr2[s2[start]-'a'] && arr1[s2[end]-'a']==arr2[s2[end]-'a'])
             if(isvalid(arr1,arr2))return true;
             
             arr2[s2[start]-'a']--;
