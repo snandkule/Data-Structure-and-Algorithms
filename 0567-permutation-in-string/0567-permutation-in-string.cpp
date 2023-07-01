@@ -12,27 +12,34 @@ public:
         
         int arr1[26]={0};
         int arr2[26]={0};
-        for(int i=0;i<s1.length();i++)arr1[s1[i]-'a']++;
-        
-        int start =0,end = 0;
-        
-        while(end<s1.length()){
-            arr2[s2[end]-'a']++;
-            end++;
+        for(int i=0;i<s1.length();i++){
+            arr1[s1[i]-'a']++;
+            arr2[s2[i]-'a']++;
         }
         
+        int start =0,end = s1.length();
+        int cnt=0;
+        for(int i=0;i<26;i++){
+            if(arr1[i]==arr2[i])cnt++;
+        }
         while(end<s2.length()){
             
-            if(arr1[s2[start]-'a']==arr2[s2[start]-'a'] && arr1[s2[end]-'a']==arr2[s2[end]-'a'])
-            if(isvalid(arr1,arr2))return true;
+            if(cnt==26)return true;
             
             arr2[s2[start]-'a']--;
+           
+            if(arr1[s2[start]-'a']==arr2[s2[start]-'a'])cnt++;
+            else if(arr1[s2[start]-'a']==arr2[s2[start]-'a']+1){
+                cnt--;
+            }
             arr2[s2[end]-'a']++;
+            if(arr1[s2[end]-'a']==arr2[s2[end]-'a'])cnt++;
+            else if(arr1[s2[end]-'a']==arr2[s2[end]-'a']-1)cnt--;
             end++;
             start++;
         }
         
-        if(isvalid(arr1,arr2))return true;
+        if(cnt==26)return true;
         
         return false;
         
