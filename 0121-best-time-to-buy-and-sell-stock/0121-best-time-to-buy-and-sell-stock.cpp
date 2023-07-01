@@ -12,10 +12,12 @@ public:
             }else{
                 if(prices[i]>prices[sale]){
                     sale = i;
+                    ans = max(ans,prices[sale]-prices[buy]);
                 }
-                ans = max(ans,prices[sale]-prices[buy]);
+               
             }
         }
+         ans = max(ans,prices[sale]-prices[buy]);
         return ans;
         
     }
