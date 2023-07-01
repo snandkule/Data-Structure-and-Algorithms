@@ -6,7 +6,7 @@ public:
         for(int i=1;i<prices.size();i++){
           
             if(prices[i]<prices[buy]){
-                ans = max(ans,prices[sale]-prices[buy]);
+                // ans = max(ans,prices[sale]-prices[buy]);
                 buy = i;
                 sale = i;
             }else{
