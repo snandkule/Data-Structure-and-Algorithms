@@ -20,13 +20,13 @@ public:
         
         if(head==nullptr)return nullptr;
         
-        map<int,Node*> m1;
-        map<Node*,int> m2;
+        // map<int,Node*> m1;
+        map<Node*,Node*> m2;
         Node* h2=new Node(head->val);
         Node* tmp_h2=h2;
-        int i=1;
-        m1[0]=h2;
-        m2[head]=0;
+        // int i=1;
+        // m1[0]=h2;
+        m2[head]=h2;
         Node* tmp_h1 = head;
         tmp_h1 = tmp_h1->next;
         
@@ -36,10 +36,10 @@ public:
             tmp_h2->next = n;
             tmp_h2 = n;
             
-            m1[i]=n;
-            m2[tmp_h1]=i;
+            // m1[i]=n;
+            m2[tmp_h1]=n;
             tmp_h1 = tmp_h1->next; 
-            i++;
+            // i++;
         }
         
         tmp_h2 = h2;
@@ -48,8 +48,8 @@ public:
              if(tmp_h1->random==nullptr)
              tmp_h2->random = nullptr;
              else{
-                 cout<<m2[tmp_h1->random]<<endl;
-                 tmp_h2->random = m1[m2[tmp_h1->random]];
+                 // cout<<m2[tmp_h1->random]<<endl;
+                 tmp_h2->random = m2[tmp_h1->random];
              }
              tmp_h1 = tmp_h1->next;
              tmp_h2 = tmp_h2->next;
