@@ -20,7 +20,6 @@ public:
             ListNode* tmp = curr->next;
             curr->next = prev;
             prev = curr;
-            if(tmp==nullptr)return curr;
             curr = tmp;
         }
         return prev;
