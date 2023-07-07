@@ -12,10 +12,13 @@ class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         
-        int carry=0;
-        ListNode* ans=nullptr;
-        ListNode* curr=nullptr;
-        bool ishead=false;
+       
+       
+        ListNode* curr=new ListNode((l1->val + l2->val)%10);
+         ListNode* ans=curr;
+         int carry= (l1->val + l2->val )/10;
+       l1 = l1->next;
+        l2 = l2->next;
         
         while(l1!=nullptr&&l2!=nullptr){
             
@@ -23,17 +26,13 @@ public:
             
             carry = (l1->val + l2->val + carry)/10;
             
-            if(curr==nullptr){
-                ans = tmp;
-                curr=tmp;
-            }else{
-                curr->next = tmp;
-                curr= tmp;
-            }
+            curr->next = tmp;
+            curr= tmp;
+            
             l1 = l1->next;
             l2 = l2->next;
         }
-        
+        if(l1==nullptr)l1=l2;
         while(l1!=nullptr){
             
             ListNode* tmp = new ListNode((l1->val + carry)%10);
@@ -50,22 +49,7 @@ public:
             l1 = l1->next;
         }
         
-           while(l2!=nullptr){
-            
-            ListNode* tmp = new ListNode(( l2->val + carry)%10);
-            
-            carry = (l2->val + carry)/10;
-            
-            if(curr==nullptr){
-                ans = tmp;
-                curr=tmp;
-            }else{
-                curr->next = tmp;
-                curr= tmp;
-            }
-          
-            l2 = l2->next;
-        }
+        
         if(carry>0){
             ListNode* tmp = new ListNode(carry);
             curr->next = tmp;
