@@ -19,7 +19,7 @@ void getsum(vector<int> &A, vector<int> &arr, int i, long long s, int B){
     s+=A[i];
     getsum(A,arr,i,s,B);
     
-    getsum(A,arr,i+1,s,B);
+    // getsum(A,arr,i+1,s,B);
     
     arr.pop_back();
 }
