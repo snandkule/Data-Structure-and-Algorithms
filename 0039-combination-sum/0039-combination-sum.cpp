@@ -5,12 +5,12 @@ public:
 //     }
     
 vector<vector<int>> ans;
-// set<vector<int>> s1;
+set<vector<int>> s1;
 void getsum(vector<int> &A, vector<int> arr, int i, long long s, int B){
     if(i>=A.size()||s>=B){
         if(s==B){
             // if(s1.find(arr)!=s1.end){
-            ans.push_back(arr); 
+            s1.insert(arr); 
             // s1.insert(arr);   
             // }
         }
@@ -30,8 +30,7 @@ vector<vector<int> > combinationSum(vector<int> &A, int B) {
     ans = tmp;
     vector<int> arr(0);
     getsum(A,arr,0,0,B);
-    set<vector<int>> s{ans.begin(),ans.end()};
-ans.assign(s.begin(),s.end());
+ans.assign(s1.begin(),s1.end());
     sort(ans.begin(),ans.end(),[](const vector<int> &a1, const vector<int> &a2)->bool{
         int i=0,j=0;
         
