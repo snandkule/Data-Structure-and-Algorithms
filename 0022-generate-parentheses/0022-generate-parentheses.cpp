@@ -1,33 +1,29 @@
 class Solution {
 public:
-    vector<string> ans;
     
-    void genStr(string s, int n1, int n2){
-        if(n1>n2)return;
-        if(n1==n2 && n1==0){
-            ans.push_back(s);
-            return;
-        }
-        if(n1<n2){
-            if(n1>0){
-                s.push_back('(');
-                genStr(s,n1-1,n2);
-                s.pop_back();
-            }
-            if(n2>0){
-                s.push_back(')');
-                genStr(s,n1,n2-1);
-                s.pop_back();
-            }   
-        }
-        if(n1==n2){
-            s.push_back('(');
-            genStr(s,n1-1,n2);
-            s.pop_back();
-        }
+  
+    
+void genString(int A, int op, int cl, string curr, vector<string> &ans)
+{
+    if(op==A && cl==A){
+        ans.push_back(curr);
+        return;
     }
-    vector<string> generateParenthesis(int n) {
-        genStr("",n,n);
-        return ans;
+    if(op<A){
+        curr.push_back('(');
+        genString(A,op+1,cl,curr,ans);
+        curr.pop_back();
     }
+    if(cl<A && cl<op){
+        curr.push_back(')');
+        genString(A,op,cl+1,curr,ans);
+    }
+}
+vector<string> generateParenthesis(int A) {
+    vector<string> ans(0);
+    if(A==0)return ans;
+    genString(A,0,0,"",ans);
+    return ans;
+}
+
 };
