@@ -6,7 +6,7 @@ public:
     
 vector<vector<int>> ans;
 set<vector<int>> s1;
-void getsum(vector<int> &A, vector<int> arr, int i, long long s, int B){
+void getsum(vector<int> &A, vector<int> &arr, int i, long long s, int B){
     if(i>=A.size()||s>=B){
         if(s==B){
             // if(s1.find(arr)!=s1.end){
@@ -20,7 +20,10 @@ void getsum(vector<int> &A, vector<int> arr, int i, long long s, int B){
     arr.push_back(A[i]);
     s+=A[i];
     getsum(A,arr,i,s,B);
+    
     getsum(A,arr,i+1,s,B);
+    
+    arr.pop_back();
 }
 
 vector<vector<int> > combinationSum(vector<int> &A, int B) {
