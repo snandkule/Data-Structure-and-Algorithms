@@ -11,21 +11,25 @@
  */
 class Solution {
 public:
-    int getdepth(TreeNode* root){
-        if(root==NULL)return 0;
-        int lh = getdepth(root->left)+1;
-        int rh = getdepth(root->right)+1;
-        return max(lh,rh);
-    }
+    // int getdepth(TreeNode* root){
+    //     if(root==NULL)return 0;
+    //     int lh = getdepth(root->left)+1;
+    //     int rh = getdepth(root->right)+1;
+    //     return max(lh,rh);
+    // }
     void getright(TreeNode* node, vector<int> &ans, int id){
         if(node==nullptr)return;
-        ans[id] = node->val;
+        if(id+1<=ans.size())
+            ans[id] = node->val;
+        else{
+            ans.push_back(node->val);
+        }
         getright(node->left,ans,id+1);
         getright(node->right,ans,id+1);
     }
     vector<int> rightSideView(TreeNode* root) {
-        int h = getdepth(root);
-        vector<int> ans(h,0);
+        // int h = getdepth(root);
+        vector<int> ans(0);
         if(root==NULL)return ans;
         
         getright(root, ans, 0);
