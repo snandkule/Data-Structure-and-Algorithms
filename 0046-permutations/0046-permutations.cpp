@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    void getAns(vector<int> &nums, vector<bool> &visited, vector<int> tmp,  vector<vector<int>> &ans){
+    void getAns(vector<int> &nums, vector<bool> &visited, vector<int> &tmp,  vector<vector<int>> &ans){
         if(tmp.size()==nums.size()){
             ans.push_back(tmp);
             return;
