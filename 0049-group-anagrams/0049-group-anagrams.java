@@ -31,8 +31,10 @@ class Solution {
         Map<String, List<String>> m1 = new HashMap<>();
 
         for(String s: strs){
-            char[] schar = s.toCharArray();
-            Arrays.sort(schar);
+            char[] schar = new char[26];
+            for(char c:s.toCharArray()){
+                schar[c-'a']++;
+            }
             if(!m1.containsKey(String.valueOf(schar))){
                 m1.put(String.valueOf(schar), new ArrayList<>());
             }
