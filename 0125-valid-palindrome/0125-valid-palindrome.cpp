@@ -3,12 +3,14 @@ public:
     bool isPalindrome(string s) {
         
         int i=0,j = s.length()-1;
-        for(int k=0;k<s.length();k++){
-              if(s[k]>='A' && s[k]<='Z'){
-                  s[k] = 'a' + (s[k]-'A');
-              }
-        }
+      
         while(i<=j){
+            if(s[i]>='A' && s[i]<='Z'){
+                  s[i] = 'a' + (s[i]-'A');
+              }
+            if(s[j]>='A' && s[j]<='Z'){
+                  s[j] = 'a' + (s[j]-'A');
+              }
             if(!((s[i]>='a' && s[i]<='z')||(s[i]>='0' && s[i]<='9'))){
                 i++;
                 continue;
