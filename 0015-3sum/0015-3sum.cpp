@@ -1,28 +1,41 @@
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
-        map<int,int> m1;
-        for(int i=0;i<nums.size();i++){
-            m1[nums[i]] = i;
-        }
-        set<vector<int>> ans;
-        for(int i=0;i<nums.size()-1;i++){
-            if(i>1 && nums[i]==nums[i-1])continue;
-            for(int j=i+1;j<nums.size();j++){
-                if(j>i+1 && nums[j]==nums[j-1])continue;
-                if(m1.find((-1)*(nums[i]+nums[j]))!=m1.end() && m1[(-1)*(nums[i]+nums[j])]!=i && m1[(-1)*(nums[i]+nums[j])]!=j){
-                    vector<int> tmp(3,0);
-                    tmp[0]=nums[i];
-                    tmp[1]=nums[j];
-                    tmp[2]=(-1)*(nums[i]+nums[j]);
-                    sort(tmp.begin(),tmp.end());
-                    ans.insert(tmp);
+        sort(nums.begin(), nums.end());
+        
+        vector<vector<int>> ans;
+             
+        for(int i=0;i<nums.size()-2;i++){
+             if(i>0&& nums[i]==nums[i-1]){
+                       continue;
+            }
+            int target = (-1)* nums[i];
+            int start = i+1;
+            int end = nums.size()-1;
+            
+            while(start<end){
+                if(nums[start]+nums[end]<target){
+                    start++;
+                }else if(nums[start]+nums[end]>target){
+                    end--;
+                }else{
+                    vector<int> triplet(3);
+                    triplet[0]=nums[i];
+                    triplet[1]=nums[start];
+                    triplet[2]=nums[end];
+                    ans.push_back(triplet);
+                    
+                    while(start<end && nums[start]==triplet[1]){
+                        start++;
+                    }
+                    while(start<end && nums[end]==triplet[2]){
+                        end--;
+                    }
                 }
             }
-            
+           
         }
-        vector<vector<int>> t(ans.begin(),ans.end());
-        return t;
-        
+        return ans;
+       
     }
 };
