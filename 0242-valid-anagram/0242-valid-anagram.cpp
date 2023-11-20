@@ -1,21 +1,17 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-       
+        vector<int> sarr(26,0);
+        vector<int> tarr(26,0);
         if(s.length()!=t.length())return false;
-        int m1[26]={0};
-       
-        
         for(int i=0;i<s.length();i++){
-            m1[s[i]-'a']++;
-             m1[t[i]-'a']--;
+            sarr[s[i]-'a']++;
+            tarr[t[i]-'a']++;
         }
-        
-         for(int i=0;i<26;i++){
-            if(m1[i] != 0)return false;
+        for(int i=0;i<26;i++){
+            if(sarr[i]!=tarr[i])return false;
         }
-   
         return true;
-        
     }
+    
 };
