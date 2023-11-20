@@ -9,19 +9,20 @@ public:
     }
     
     vector<int> topKFrequent(vector<int>& nums, int k) {
-        unordered_map<int,int> m1;
+        //unordered_map<int,int> m1;
+        vector<int> darr(20003,0);
         for(int i=0;i<nums.size();i++){
-            if(m1.find(nums[i])!=m1.end())
-                m1[nums[i]]++;
-            else{
-                m1[nums[i]] = 1;
-            }
+            // if(m1.find(nums[i])!=m1.end())
+            //     m1[nums[i]]++;
+            // else{
+            //     m1[nums[i]] = 1;
+            // }
+            darr[nums[i]+10000]++;
         }
         vector<pair<int,int>> v1;
         
         for(int i=0;i<nums.size();i++){
-            // cout<<"m1[nums[i]] ="<<m1[nums[i]]<<", nums[i] ="<<nums[i]<<endl;
-            v1.push_back(make_pair(m1[nums[i]],nums[i]));
+            v1.push_back(make_pair(darr[nums[i]+10000],nums[i]));
         }
         sort(v1.begin(),v1.end(), customComparator);
         
