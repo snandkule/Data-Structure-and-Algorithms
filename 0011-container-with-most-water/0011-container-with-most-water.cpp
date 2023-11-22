@@ -7,12 +7,16 @@ public:
         int i=0,j=height.size()-1;
         
         while(i<j){
-            ans = max(ans,(j-i)*min(height[i],height[j]));
-            if(height[i]<height[j]){
-                i++;
-            }else{
-                j--;
-            }
+            int h =min(height[i],height[j]);
+            ans = max(ans,(j-i)*h);
+            
+            while (height[i] <= h && i < j) i++;
+            while (height[j] <= h && i < j) j--;
+            // if(height[i]<height[j]){
+            //     i++;
+            // }else{
+            //     j--;
+            // }
         }
         return ans;
         
