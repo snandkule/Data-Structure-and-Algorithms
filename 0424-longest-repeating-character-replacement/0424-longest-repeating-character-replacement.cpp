@@ -24,9 +24,9 @@ public:
                 start++;
                 maxcnt = getMax(cntarr);
             }
-                // if(maxcnt+k == i-start+1){
+                if(maxcnt+k >= i-start+1){
                     ans = max(ans, i-start+1);
-                // }
+                }
             
         }
         // unsigned long maxcnt = getMax(cntarr);
