@@ -3,7 +3,9 @@ public:
     unsigned long  getMax(vector<unsigned long>& arr){
         unsigned long cnt=0;
         for(unsigned long i=0;i<arr.size();i++){
-            cnt = max(cnt, arr[i]);
+            if(arr[cnt]<arr[i]){
+                cnt=i;
+            }
         }
         return cnt;
     }
@@ -19,14 +21,15 @@ public:
             cntarr[s[i]-'A']++;
             unsigned long maxcnt = getMax(cntarr);  
             
-            while(maxcnt+k < i-start+1){
+            while(cntarr[maxcnt]+k < i-start+1){
                 cntarr[s[start]-'A']--;
+                if(maxcnt==s[start]-'A')
+                    maxcnt = getMax(cntarr);
                 start++;
-                maxcnt = getMax(cntarr);
             }
-                if(maxcnt+k >= i-start+1){
+                // if(maxcnt+k >= i-start+1){
                     ans = max(ans, i-start+1);
-                }
+                // }
             
         }
        
