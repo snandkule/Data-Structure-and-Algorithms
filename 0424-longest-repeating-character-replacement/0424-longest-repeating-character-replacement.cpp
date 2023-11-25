@@ -19,7 +19,7 @@ public:
             cntarr[s[i]-'A']++;
             unsigned long maxcnt = getMax(cntarr);  
             
-            while(start<i && (maxcnt+k < i-start+1)){
+            while(maxcnt+k < i-start+1){
                 cntarr[s[start]-'A']--;
                 start++;
                 maxcnt = getMax(cntarr);
@@ -29,11 +29,7 @@ public:
                 }
             
         }
-        // unsigned long maxcnt = getMax(cntarr);
-        // cout<<"maxcnt+k ="<<maxcnt+k <<", s.length()-start ="<<s.length()-start<<endl;
-        // if(maxcnt+k >= s.length()-start){
-        //     ans = max(ans, s.length()-start);
-        // }
+       
         return ans;
     }
 };
