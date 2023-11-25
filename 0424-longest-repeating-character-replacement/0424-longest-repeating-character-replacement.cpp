@@ -18,7 +18,7 @@ public:
         for(int i=0;i<s.length();i++){
             cntarr[s[i]-'A']++;
             maxf = max(maxf, cntarr[s[i]-'A']); 
-            cout<<"ans ="<<ans<<", maxf ="<<maxf<<endl;
+            // cout<<"ans ="<<ans<<", maxf ="<<maxf<<endl;
             if(ans-maxf<k){
                 ans++;
             }else{
