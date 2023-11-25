@@ -2,7 +2,7 @@ class Solution {
 public:
     unsigned long  getMax(vector<unsigned long>& arr){
         unsigned long cnt=0;
-        for(unsigned long i=0;i<arr.size();i++){
+        for(unsigned long i=0;i<26;i++){
             if(arr[cnt]<arr[i]){
                 cnt=i;
             }
