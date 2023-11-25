@@ -7,7 +7,7 @@ public:
         unsigned long ans=0;
         
         for(unsigned long i=0;i<s.length();i++){
-            if(m1.find(s[i])==m1.end() || m1[s[i]]==false){
+            if(m1[s[i]]==false){
                 m1[s[i]] = true;
             }else{
                 ans = max(ans,i-start);
