@@ -1,26 +1,24 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
+        int start=0;
+        map<char,bool> m1;
         
-        int start =0,curr=0,ans=0;
+        unsigned long ans=0;
         
-        vector<int> arr(120,0);
-        
-        while(curr<s.length()){
-            
-            if(arr[s[curr]-' ']==0){
-                arr[s[curr]-' ']=1;
+        for(unsigned long i=0;i<s.length();i++){
+            if(m1.find(s[i])==m1.end() || m1[s[i]]==false){
+                m1[s[i]] = true;
             }else{
-                ans = max(ans, curr-start);
-                while(arr[s[curr]-' ']==1){
-                    arr[s[start]-' ']=0;
+                ans = max(ans,i-start);
+                while(m1[s[i]] && start<i){
+                    m1[s[start]] = false;
                     start++;
                 }
-                arr[s[curr]-' ']=1;
+                m1[s[i]] = true;
             }
-            curr++;
         }
-        ans = max(ans, curr-start);
+        ans = max(ans, s.length()-start);
         return ans;
         
     }
