@@ -5,7 +5,8 @@ public:
         int minv = prices[0];
         int ans=0;
         for(int i=0;i<prices.size();i++){
-            ans = max(ans, prices[i]-minv);
+            if(prices[i]>minv)
+                ans = max(ans, prices[i]-minv);
             minv= min(minv, prices[i]);
         }
         return ans;
