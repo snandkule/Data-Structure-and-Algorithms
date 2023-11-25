@@ -1,39 +1,39 @@
 class Solution {
 public:
-    bool checkValid(vector<int> &arr,int k,int start,int curr){
-        
-        int maxe = 0;
-        for(int i=1;i<26;i++){
-            if(arr[i]>arr[maxe]){
-                maxe=i;
-            }
+    unsigned long  getMax(vector<unsigned long>& arr){
+        unsigned long cnt=0;
+        for(unsigned long i=0;i<arr.size();i++){
+            cnt = max(cnt, arr[i]);
         }
-        if(curr-start+1-arr[maxe]>k){
-            return false;
-        }
-        return true;
+        return cnt;
     }
     int characterReplacement(string s, int k) {
-        vector<int> arr(26,0);
         
-        int start =0;
-        int ans=0;
-        int curr=0;
-        int maxfreq=0;
-        while(curr<s.length()){
+        unsigned long ans=0;
+        vector<unsigned long> cntarr(26,0);
+        unsigned long start=0;
+        
+        for(unsigned long i=0;i<s.length();i++){
             
-            arr[s[curr]-'A']++;
             
-            maxfreq = max(maxfreq, arr[s[curr]-'A']);
-            bool isvalid = (curr-start+1-maxfreq<=k);
-            if(!isvalid){
-                arr[s[start]-'A']--;
+            cntarr[s[i]-'A']++;
+            unsigned long maxcnt = getMax(cntarr);  
+            
+            while(start<i && (maxcnt+k < i-start+1)){
+                cntarr[s[start]-'A']--;
                 start++;
+                maxcnt = getMax(cntarr);
             }
-             ans = max(ans,curr-start+1);
-            curr++;
+                // if(maxcnt+k == i-start+1){
+                    ans = max(ans, i-start+1);
+                // }
+            
         }
-    
+        // unsigned long maxcnt = getMax(cntarr);
+        // cout<<"maxcnt+k ="<<maxcnt+k <<", s.length()-start ="<<s.length()-start<<endl;
+        // if(maxcnt+k >= s.length()-start){
+        //     ans = max(ans, s.length()-start);
+        // }
         return ans;
     }
 };
