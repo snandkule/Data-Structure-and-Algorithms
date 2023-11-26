@@ -14,26 +14,42 @@ public:
         
         if ((!head) || (!head->next) || (!head->next->next)) return; // Edge cases
         
-        stack<ListNode*> my_stack;
-        ListNode* ptr = head;
         int size = 0;
-        while (ptr != NULL) // Put all nodes in stack
-        {
-            my_stack.push(ptr);
+        ListNode* prev = head;
+        ListNode* prev2 = head;
+        ListNode* curr = head;
+        while(curr!=nullptr && curr->next!=nullptr){
+            prev2=prev;
+            prev = prev->next;
+            curr= curr->next->next;
             size++;
-            ptr = ptr->next;
+        }
+        curr = prev;
+        // prev2->next = nullptr;
+        
+        stack<ListNode*> my_stack;
+        while (curr != nullptr) // Put all nodes in stack
+        {
+            my_stack.push(curr);
+            // cout<<curr->val<<endl;
+            curr = curr->next;
         }
         
         ListNode* pptr = head;
-        for (int j=0; j<size/2; j++) // Between every two nodes insert the one in the top of the stack
+        int n = my_stack.size();
+        for (int j=0; j<n; j++) // Between every two nodes insert the one 
         {
-            ListNode *element = my_stack.top();
+            // cout<<pptr->val<<endl;
+            ListNode* element = my_stack.top();
             my_stack.pop();
             element->next = pptr->next;
             pptr->next = element;
             pptr = pptr->next->next;
         }
-        pptr->next = NULL;
+        pptr->next = nullptr;
+        
+        
+        
 //         if(head == nullptr)return;
         
 //         //find middle
