@@ -6,7 +6,7 @@ class Solution {
         
         while(start<=end){
             mid=(start+end)/2;
-            System.out.println(start+", "+mid+", "+end);
+            // System.out.println(start+", "+mid+", "+end);
             if(nums[mid]==target){
                 return mid;
             }
