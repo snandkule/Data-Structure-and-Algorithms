@@ -1,7 +1,6 @@
 class Solution {
     public int findMin(int[] nums) {
-        int start = nums[0], end = nums[nums.length-1];
-        if(start<=end)return start;
+        if(nums[0]<=nums[nums.length-1])return nums[0];
 
         int i=0,j=nums.length-1,mid=0;
         int ans = Integer.MAX_VALUE;
