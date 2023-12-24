@@ -14,11 +14,11 @@
  * }
  */
 class Solution {
-    Stack<TreeNode> arr= new Stack<TreeNode>();
+    List<TreeNode> arr= new ArrayList<TreeNode>();
     public void getPossibleRoot(TreeNode sbroot, int rootVal){
         if(sbroot==null)return;
         if(sbroot.val==rootVal){
-            arr.push(sbroot);
+            arr.add(sbroot);
         }
         getPossibleRoot(sbroot.left, rootVal);
         getPossibleRoot(sbroot.right, rootVal);
@@ -38,8 +38,8 @@ class Solution {
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
         if(subRoot==null)return true;
         getPossibleRoot(root,subRoot.val);
-        while(!arr.isEmpty()){
-            if(isSameTree(subRoot, arr.pop())){
+        for(int i=0;i<arr.size();i++){
+            if(isSameTree(subRoot, arr.get(i))){
                 return true;
             }
         }
