@@ -8,20 +8,20 @@ class Solution {
                 stack.push(s.charAt(i));
             }else{
                 if(stack.isEmpty())return false;
+                Character c = stack.pop();
                 if(s.charAt(i)==')'){
-                    if(stack.peek()!='('){
+                    if(c!='('){
                         return false;
                     }
                 }else if(s.charAt(i)=='}'){
-                    if(stack.peek()!='{'){
+                    if(c!='{'){
                         return false;
                     }
                 }else{
-                    if(stack.peek()!='['){
+                    if(c!='['){
                         return false;
                     }
                 }
-                stack.pop();
             }
         }
         if(!stack.isEmpty())return false;
