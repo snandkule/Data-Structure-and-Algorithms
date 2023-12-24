@@ -13,12 +13,13 @@
  *     }
  * }
  */
+import java.util.Vector;
 class Solution {
-    Stack<TreeNode> arr= new Stack<TreeNode>();
+    Vector<TreeNode> arr= new Vector<TreeNode>();
     public void getPossibleRoot(TreeNode sbroot, int rootVal){
         if(sbroot==null)return;
         if(sbroot.val==rootVal){
-            arr.push(sbroot);
+            arr.add(sbroot);
         }
         getPossibleRoot(sbroot.left, rootVal);
         getPossibleRoot(sbroot.right, rootVal);
@@ -38,8 +39,8 @@ class Solution {
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
         if(subRoot==null)return true;
         getPossibleRoot(root,subRoot.val);
-        while(!arr.isEmpty()){
-            if(isSameTree(subRoot, arr.pop())){
+        for(TreeNode curr: arr){
+            if(isSameTree(subRoot, curr)){
                 return true;
             }
         }
