@@ -3,19 +3,26 @@ class Solution {
     
     void checkCombination(int[] candidates, int index, List<Integer> arr, int currSum, int target){
       
-        if((currSum>target)||(index>=candidates.length && currSum!=target)){
+        if(currSum>target){
             return;
         }
         if(currSum==target){
             ans.add(new ArrayList<>(arr));
             return;
         }
-        checkCombination(candidates, index+1, arr,currSum,target);
-        currSum+=candidates[index];
-        arr.add(candidates[index]);
-        checkCombination(candidates, index, arr,currSum,target);
-        checkCombination(candidates, index+1, arr,currSum,target);
-        arr.remove(arr.size()-1);
+        for(int i=index; i<candidates.length ;i++){
+            currSum+=candidates[i];
+            arr.add(candidates[i]);
+            checkCombination(candidates, i, arr,currSum,target);
+            arr.remove(arr.size()-1);
+            currSum-=candidates[i];
+        }
+        // checkCombination(candidates, index+1, arr,currSum,target);
+        // currSum+=candidates[index];
+        // arr.add(candidates[index]);
+        // checkCombination(candidates, index, arr,currSum,target);
+        // checkCombination(candidates, index+1, arr,currSum,target);
+        // arr.remove(arr.size()-1);
         
     }
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
