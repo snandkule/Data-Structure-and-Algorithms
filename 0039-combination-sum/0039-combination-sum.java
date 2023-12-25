@@ -1,5 +1,5 @@
 class Solution {
-    Set<List<Integer>> ans = new HashSet<>();
+    List<List<Integer>> ans = new ArrayList<>();
     
     void checkCombination(int[] candidates, int index, List<Integer> arr, int currSum, int target){
       
@@ -30,6 +30,6 @@ class Solution {
         List<Integer> arr = new ArrayList<>();
         checkCombination(candidates,0, arr, 0, target);
         // List<List<Integer>> anslist = new ArrayList<>(ans);
-        return new ArrayList<>(ans);
+        return ans;
     }
 }
