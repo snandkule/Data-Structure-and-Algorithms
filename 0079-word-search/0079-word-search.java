@@ -1,7 +1,8 @@
 class Solution {
     boolean ans = false;
     boolean[][] visited;
-    public void checkExist(char[][] board, String word, int curr, int i, int j ){
+    String word;
+    public void checkExist(char[][] board,  int curr, int i, int j ){
        
         // System.out.println(curr);
         if(curr==word.length()){
@@ -13,27 +14,27 @@ class Solution {
         
         visited[i][j] = true;
     
-        checkExist(board, word, curr+1, i-1, j);
+        checkExist(board, curr+1, i-1, j);
 
-        checkExist(board, word, curr+1, i+1, j);
+        checkExist(board, curr+1, i+1, j);
         
-        checkExist(board, word, curr+1, i, j-1);
+        checkExist(board, curr+1, i, j-1);
      
-        checkExist(board, word, curr+1, i, j+1);
+        checkExist(board, curr+1, i, j+1);
        
         visited[i][j]=false;
         
     }
-    public boolean exist(char[][] board, String word) {
+    public boolean exist(char[][] board, String word1) {
         if(board.length==0 || board[0].length==0)return false;
         int m = board.length, n = board[0].length;
         visited = new boolean[m][n];
-        
+        word = word1;
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 if(ans)return true;
                 if(word.charAt(0)==board[i][j]){
-                    checkExist(board, word, 0, i, j);
+                    checkExist(board, 0, i, j);
                 }   
             }
         }
