@@ -1,27 +1,22 @@
 class Solution {
-    Set<List<Integer>> ans = new HashSet<>();
-    
-    void checkCombination(int[] candidates, int index, List<Integer> arr, int currSum, int target){
-      
-        if((currSum>target)||(index>=candidates.length && currSum!=target)){
-            return;
-        }
-        if(currSum==target){
-            ans.add(new ArrayList<>(arr));
-            return;
-        }
-
-        checkCombination(candidates, index+1, arr,currSum,target);
-        currSum+=candidates[index];
-        arr.add(candidates[index]);
-        checkCombination(candidates, index, arr,currSum,target);
-        checkCombination(candidates, index+1, arr,currSum,target);
-        arr.remove(arr.size()-1);
-    }
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<Integer> arr = new ArrayList<>();
-        checkCombination(candidates,0, arr, 0, target);
-        List<List<Integer>> anslist = new ArrayList<>(ans);
-        return anslist;
+    	Arrays.sort(candidates);
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        getResult(result, new ArrayList<Integer>(), candidates, target, 0);
+        
+        return result;
+    }
+    
+    private void getResult(List<List<Integer>> result, List<Integer> cur, int candidates[], int target, int start){
+    	if(target > 0){
+    		for(int i = start; i < candidates.length && target >= candidates[i]; i++){
+    			cur.add(candidates[i]);
+    			getResult(result, cur, candidates, target - candidates[i], i);
+    			cur.remove(cur.size() - 1);
+    		}//for
+    	}//if
+    	else if(target == 0 ){
+    		result.add(new ArrayList<Integer>(cur));
+    	}//else if
     }
 }
