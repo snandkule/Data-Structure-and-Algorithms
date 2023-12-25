@@ -10,7 +10,7 @@ class Solution {
             ans.add(new ArrayList<>(arr));
             return;
         }
-        for(int i=index; i<candidates.length ;i++){
+        for(int i=index; i<candidates.length && target-currSum>=candidates[i];i++){
             currSum+=candidates[i];
             arr.add(candidates[i]);
             checkCombination(candidates, i, arr,currSum,target);
