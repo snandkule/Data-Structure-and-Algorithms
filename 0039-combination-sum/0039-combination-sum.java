@@ -10,13 +10,13 @@ class Solution {
             ans.add(new ArrayList<>(arr));
             return;
         }
-
         checkCombination(candidates, index+1, arr,currSum,target);
         currSum+=candidates[index];
         arr.add(candidates[index]);
         checkCombination(candidates, index, arr,currSum,target);
         checkCombination(candidates, index+1, arr,currSum,target);
         arr.remove(arr.size()-1);
+        
     }
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         Arrays.sort(candidates);
