@@ -1,7 +1,7 @@
 class Solution {
     boolean ans = false;
     public void checkExist(char[][] board, String word, int curr, int i, int j, boolean[][] visited){
-        if(curr>word.length())return;
+        // if(curr>word.length())return;
         // System.out.println(curr);
         if(curr==word.length()){
             ans = true;
