@@ -18,9 +18,7 @@ class Solution {
         List<Integer> arr2 = new ArrayList<>(arr);
         arr2.add(candidates[index]);
         checkCombination(candidates, index, arr2,currSum,target);
-        List<Integer> arr3 = new ArrayList<>(arr);
-         arr3.add(candidates[index]);
-        checkCombination(candidates, index+1, arr3,currSum,target);
+        checkCombination(candidates, index+1, arr2,currSum,target);
         // arr.remove(arr.size()-1);
     }
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
