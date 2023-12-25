@@ -1,7 +1,8 @@
 class Solution {
     boolean ans = false;
-    public void checkExist(char[][] board, String word, int curr, int i, int j, boolean[][] visited){
-        // if(curr>word.length())return;
+    boolean[][] visited;
+    public void checkExist(char[][] board, String word, int curr, int i, int j ){
+       
         // System.out.println(curr);
         if(curr==word.length()){
             ans = true;
@@ -12,13 +13,13 @@ class Solution {
         
         visited[i][j] = true;
     
-        checkExist(board, word, curr+1, i-1, j, visited);
+        checkExist(board, word, curr+1, i-1, j);
 
-        checkExist(board, word, curr+1, i+1, j, visited);
+        checkExist(board, word, curr+1, i+1, j);
         
-        checkExist(board, word, curr+1, i, j-1, visited);
+        checkExist(board, word, curr+1, i, j-1);
      
-        checkExist(board, word, curr+1, i, j+1, visited);
+        checkExist(board, word, curr+1, i, j+1);
        
         visited[i][j]=false;
         
@@ -26,13 +27,13 @@ class Solution {
     public boolean exist(char[][] board, String word) {
         if(board.length==0 || board[0].length==0)return false;
         int m = board.length, n = board[0].length;
-        boolean[][] visited = new boolean[m][n];
+        visited = new boolean[m][n];
         
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 if(ans)return true;
                 if(word.charAt(0)==board[i][j]){
-                    checkExist(board, word, 0, i, j, visited);
+                    checkExist(board, word, 0, i, j);
                 }   
             }
         }
