@@ -18,10 +18,7 @@ class Solution {
     public boolean check(TreeNode root, long high, long low){
         if(root==null)return true;
         if(root.val<=low || root.val>=high)return false;
-        if(root.left==null && root.right==null)return true;
-        if(!check(root.left, root.val,low))return false;
-        
-        if(!check(root.right, high,root.val))return false;
+        if(!check(root.left, root.val,low) || !check(root.right, high,root.val))return false;
         
         return true;
         
