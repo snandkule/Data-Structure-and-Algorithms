@@ -16,20 +16,22 @@
 class Solution {
     int ans=-1;
     int curr = 0;
-    void traverse(TreeNode root, int k){
+    int k=0;
+    void traverse(TreeNode root){
         if(root==null)return;
-        traverse(root.left,k);
+        traverse(root.left);
         // System.out.println("val ="+root.val);
         curr++;
         if(curr==k){
             ans = root.val;
             return;
         }
-        traverse(root.right,k);
+        traverse(root.right);
           
     }
-    public int kthSmallest(TreeNode root, int k) {
-        traverse(root,k);
+    public int kthSmallest(TreeNode root, int kv) {
+        k=kv;
+        traverse(root);
         return ans;
         
     }
