@@ -11,20 +11,18 @@ class Solution {
                     arr[i]=1;
             }
             if(i>0){
-                if(s.charAt(i-1)>='1' && s.charAt(i-1)<='2'){
-                    if(s.charAt(i-1)=='2'){
-                        if(s.charAt(i)>='0' && s.charAt(i)<='6'){
-                            if(i>1)
-                                arr[i]+=arr[i-2];
-                            else
-                                arr[i]+=1;
-                        }
-                    }else{
+                if(s.charAt(i-1)=='2'){
+                    if(s.charAt(i)>='0' && s.charAt(i)<='6'){
                         if(i>1)
-                                arr[i]+=arr[i-2];
-                            else
-                                arr[i]+=1;
+                            arr[i]+=arr[i-2];
+                        else
+                            arr[i]+=1;
                     }
+                }else if(s.charAt(i-1)=='1'){
+                    if(i>1)
+                            arr[i]+=arr[i-2];
+                        else
+                            arr[i]+=1;
                 }
             }
         }
